@@ -5,5 +5,7 @@ Reads a csv file containing a list of connected cities in the form of an adjacen
 
 The input file can also be expanded or modified, while maintaining the adjacency list format, to include other connections.
 
-The program uses the book author's unmodified DisjSets.java class, which can be found here:
+The program uses the book author's DisjSets.java class, which can be found here:
 https://users.cs.fiu.edu/~weiss/dsaajava3/code/DisjSets.java
+
+The DisjSets union function was slightly modified to also return the new root after a union, to avoid running find later to find it in the program.

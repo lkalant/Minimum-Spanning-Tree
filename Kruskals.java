@@ -1,5 +1,5 @@
 //  Levon Kalantarian
-//  Uses book author's unmodified DisjSets.java class, and provided csv file, both included
+//  Uses book author's DisjSets.java class, and provided csv file, both included
 //  Prints the initial edges, then edges with Kruskal's algorithm with the numbers of cities, edges, and total distances
 
 import java.io.File;
@@ -79,17 +79,18 @@ public class Kruskals {
 
             if (uset != vset) {                                     // if not same set (not yet connected)
                 edgesAccepted++;                      // accept the edge
-                int newRoot = ds.union(uset, vset);   // connect them               modified DisjSets union function to return new root after union, to avoid running find later to find it
+                int newRoot = ds.union(uset, vset);   // connect them; modified DisjSets union function to return new root after union, to avoid running find later to find it
 
                 totalFinalEdgeValue += e.getEdgeValue();
                 System.out.println(++numFinalEdges + "    " + e.getVertex1() + ", " + e.getVertex2() + ", " + e.getEdgeValue());
 
                 // update root after the merge
-//                int newRoot = ds.find(uset);
+                // int newRoot = ds.find(uset);      no longer needed, since union also returns the new root
                 cities.replace(e.getVertex1(), newRoot);
                 cities.replace(e.getVertex2(), newRoot);
             }
         }
+
         System.out.println();
         System.out.println("Number of edges: " + numFinalEdges);
         System.out.println("Number of cities: " + cities.size());
